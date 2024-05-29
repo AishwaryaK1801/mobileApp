@@ -1,0 +1,70 @@
+
+<div class="row">
+    <div class="col-12 mb-4" *ngFor="let mobileObj of mobileArr">
+        <h2 class="noProdAvl d-flex justify-content-center align-items-center" *ngIf="!mobileObj.isAvailable">Product Is Not Available!!</h2>
+
+        <div class="card"
+        [ngClass]="{
+            'notAvl':!mobileObj.isAvailable
+        }"
+        >
+    
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="imgContainer">
+                            
+                            <img
+                            *ngIf="mobileObj.image; else noMoileImg"
+                             [src]="mobileObj.image"
+                            class="img-fluid"
+                             [alt]="mobileObj.name"
+                             [title]="mobileObj.name"
+                             >
+                             <ng-template #noMoileImg>
+                                <img
+                                    src="https://placehold.co/600x400"
+                                    class="img-fluid"
+                                    
+                                >
+                             </ng-template>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="price"> {{mobileObj.name}}
+                        <!-- <h3 class="display-3" >
+                            {{mobileObj.name}}
+                            
+                        </h3> -->
+                        <small class="rating text-white p-1"
+                            [ngClass]="{
+                                'bg-success' : mobileObj.rating>=4 ,
+                                'bg-warning' : mobileObj.rating>=3 && mobileObj.rating<4 ,
+                                'bg-danger' : mobileObj.rating<3
+                            }">
+                                {{mobileObj.rating}}*
+                        </small>
+                        </div>
+                        <ul>
+                            <li
+                            class="mb-1" *ngFor="let specifican of mobileObj.specifications">
+                                {{specifican}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="price">₹52,999</div>
+                        <p class="line-though">₹59,900</p>
+                        <span class="text-success ml-2">11% off</span>
+                        <p class="mb-0">Free Delivery</p>
+                        <div>
+                            <img height="21" src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png" alt="">
+                        </div>
+                        <div class="savEtr">Save extra with combo offers</div>
+                        <div class="onlyLeft">Only 4 left</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
